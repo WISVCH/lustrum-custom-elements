@@ -1,0 +1,32 @@
+{
+  "committee": [
+    {
+      "role": "Chairman",
+      "name": "Daan Schipper"
+    },
+    {
+      "role": "Secretary",
+      "name": "Felix van Doorn"
+    },
+    {
+			"role": "Treasurer",
+			"name": "Saskia Vertregt"
+		},
+    {
+			"role": "Logistics Affairs",
+			"name": "Lianne Bruijns"
+		},
+    {
+			"role": "Promo Affairs",
+			"name": "Joep Bom"
+		},
+    {
+			"role": "Event Affairs",
+			"name": "Tom Harting"
+		},
+    {
+			"role": "Qualitate Qua",
+			"name": "Marjolein Bouwmeester"
+		}
+  ]
+}

@@ -1,0 +1,231 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+
+    <title>12th lustrum W.I.S.V. Christiaan Huygens</title>
+    <meta name="description" content="12th lustrum W.I.S.V. Christiaan Huygens">
+    <meta name="theme-color" content="#5DC5EA" />
+
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="application-name" content="Lustrum.ch">
+
+    <link rel="icon" href="favicon.ico">
+
+    <script>Polymer = {dom: 'shadow'}</script>
+
+    <link rel="import" href="bower_components/wisvch-committee/wisvch-committee.html" async>
+    <link rel="import" href="bower_components/wisvch-footer/wisvch-footer.html" async>
+
+    <link rel="manifest" href="manifest.json">
+    <style>
+      html, body {
+        margin: 0;
+        --primary-color: #5DC5EA;
+        --secondary-color: #F39200;
+        --tertiary-color: #8BD1EF;
+
+        --header-height: 64px;
+      }
+
+      header {
+        position: fixed;
+        height: var(--header-height);
+        background-color: white;
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        text-transform: uppercase;
+        font-weight: bold;
+      }
+
+      header label {
+        display: none;
+        margin: 20px;
+      }
+
+      header input {
+        display: none;
+      }
+
+      section {
+        width: 100%;
+        text-align: center;
+        padding: 25px 0;
+        min-height: 25vh;
+        line-height: 25px;
+      }
+
+      section:nth-child(2n) {
+        background-color: var(--primary-color);
+      }
+
+      section:nth-child(2n + 1) {
+        background-color: var(--secondary-color);
+      }
+
+      section p, wisvch-committee {
+        max-width: 750px;
+        margin: 0 auto;
+        padding: 10px;
+      }
+
+      h1 {
+        margin-top: var(--header-height);
+      }
+
+      h1::after {
+        content: ' ';
+        background-color: black;
+        display: block;
+        height: 5px;
+        width: 50px;
+        margin: 10px auto;
+      }
+
+      nav {
+        margin: 20px;
+        background-color: white;
+      }
+
+      nav a {
+        margin: 0 10px;
+        color: inherit;
+      }
+
+      wisvch-footer {
+        text-align: center;
+      }
+
+      .logo {
+        color: var(--secondary-color);
+        margin: 20px;
+      }
+
+      #partners img {
+        max-width: 250px;
+      }
+
+      #activities div {
+        padding: 10px 0;
+      }
+
+      #activities div:nth-child(2n + 1) {
+        background-color: var(--tertiary-color);
+      }
+
+      #merchandise img {
+        width: 450px;
+        max-width: calc(100% - 20px);
+      }
+
+      @media (max-width: 700px) {
+        nav {
+          display: none;
+          margin: 0;
+          padding: 10px;
+          width: 100%;
+          border-top: solid 1px #e7e7e7;
+          text-align: center;
+          line-height: 25px;
+        }
+
+        header input:checked ~ nav {
+          display: block;
+        }
+
+        header label {
+          display: block;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <span class="logo">Trending</span>
+      <label for="menu">Menu</label>
+      <input id="menu" type="checkbox" />
+      <nav>
+        <a href="#general">Information</a>
+        <a href="#partners">Partners</a>
+        <a href="#activities">Activities</a>
+        <a href="#merchandise">Merchandise</a>
+      </nav>
+    </header>
+    <section id="general">
+      <h1>General Information</h1>
+      <p>
+This year W.I.S.V. 'Christiaan Huygens' will celebrate its 60th anniversary. That is why this year will be all about the 12th lustrum of the study association. This entire academic year will be filled with special and exciting activities with the recurring theme Trending.
+
+Last year we started to spread the news with two activities, the announcement of our theme with a mural and a cantus. This year we will celebrate this lustrum with many different events. There will be 2 lustrum weeks with social events, business events and some educational workshops.
+
+During each quarter of this year, a number of bigger events will also be hosted. Among these will be a gala, a hitchhiking competition, a symposium and the biggest event will be the hackathon. The attendees of the hackathon come up with interesting ideas based on data delivered by companies and process this in some kind of result, for instance an app or model. The most interesting results will receive a prize for their effort.
+
+We are really looking forward to the whole year. We hope to see you at the different activities! And if you want there is also some lustrum merchandise for sale at CH.
+      </p>
+    </section>
+    <section id="partners">
+      <h1>Premium Partner</h1>
+      <img src="images-optimized/sponsors/optiver_logo.svg" alt="Optiver logo" />
+    </section>
+    <section id="activities">
+      <h1>Activities</h1>
+      <div>
+        <h2>First lustrum week</h2>
+        <h3>10 October - 14 October</h3>
+        <p>
+To start this year in a festive manner, we will start with lustrumweek 1. This week will begin with a grand opening with a spectacular show, after which we will enjoy a BBQ together. During the rest of the week there will be a lunch lecture by Vincent Warmerdam and a workshop by Optiver. There will be a beertasting at the Koperen Kat on wednesday evening and on friday we will end the week with a `friends from the past'-day, to show your friends from highschool what it is like to study in Delft.
+        </p>
+      </div>
+      <div>
+        <h2>Hitchhiking competition</h2>
+        <h3>19 November - 20 November</h3>
+        <p>
+Hitchhike to an unknown destination in Europe in a weekend! On the morning of November 19th at 9:00, the destination will be announced. The goal is to reach this city as fast as possible by hitchhiking in teams of two (male-male or male-female). When you have finally reached the city, the group will enjoy a night out! A ticket costs €25, which includes dinner and return by bus!
+        </p>
+      </div>
+      <div>
+        <h2>Gala</h2>
+        <h3>16 December</h3>
+        <p>
+In honour of the 12th lustrum of W.I.S.V. ‘Christiaan Huygens’ the Gala committee will organise a luxurious and chique party to celebrate the 60th anniversary of the association, the Lustrum Gala. This is the chance for the guys to show their possible dates how much of a gentleman they actually are! However, there’s a twist. This year's Gala will be held in 2016, which changes the traditions of the gala just a slight bit. Normally, men should ask their significant other to the gala, but because 2016 is a leap year, the tables have turned. Yes, ladies, this year all power is in your hands! You can now let the person you are into know what you, maybe, feel for him or her without having to throw all your feelings on the table.
+        </p>
+      </div>
+      <div>
+        <h2>Pubquiz by Alten</h2>
+        <h3>18 January</h3>
+        <p>
+The last activity of the first semester is the pubquiz hosted by Alten. The quiz will consist of all different types of questions or activities. Together with your team you will contend for a prize. Team sizes can vary, but at most 5 players are allowed in each team. So do you know a lot of random facts? Do you have a lot of general knowledge? Do you like to win a prize? Sign up for the pubquiz with friends and have fun! May the questions be in your favor.
+        </p>
+      </div>
+      <div>
+        <h2>Second lustrum week</h2>
+        <h3>20 March - 24 March</h3>
+        <p>
+We start of our second lustrumweek with a reception celebrating the 60th anniversary of our association. Afterwards we will go for dinner in the city together. On Tuesday we have a lecture with a very special speaker! Former political journalist Ferry Mingelen, will come and speak to us on Dutch politics and trends that he has observed there throughout his career. On Wednesday we will host a cocktail night! The cocktail night is an annual tradition to celebrate the birthday of our association. Therefore in the lustrum year we cannot omit this grand event. In the /Pub, the bar of the EEMCS building, a cocktail bar will be placed to provide everyone with delicious cocktails. The dress code of this evening will of course be Cocktail. On Thursday it's time to get your hands dirty with our hands-on workshop! Friday it is time to visit the Tiki Pool in Duinrell! The Tiki Pool is more than just a tropical swimming pool. Its eleven unique slides make the Tiki Pool the largest covered waterslide paradise in the Benelux! Enjoy the energetic and dynamic Tyfoon or relax on the Lazy river. Everybody enjoys themselves in the slides and water attractions of the Tiki Pool.
+        </p>
+      </div>
+    </section>
+    <section id="merchandise">
+      <h1>Merchandise</h1>
+      <div>
+        <img src="images-optimized/merchandise/trui1.jpg" alt="Lustrum sweater version 1" width="450" />
+        <img src="images-optimized/merchandise/muts.jpg" alt="Lustrum cap" width="450" />
+        <img src="images-optimized/merchandise/trui2.jpg" alt="Lustrum sweater version 2" width="450" />
+      </div>
+      <p>
+Buy your lustrum merchandise! You can choose for either a sweater for €25 or a hat for €7.
+
+Buy your merchandise at the board of W.I.S.V. 'Christiaan Huygens'!
+      </p>
+    </section>
+    <section id="committee">
+      <wisvch-committee src="committee.json" committee-name="12th Lustrum"></wisvch-committee>
+    </section>
+    <section>
+      <wisvch-footer></wisvch-footer>
+    </section>
+  </body>
+</html>

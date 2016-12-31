@@ -1,0 +1,9 @@
+{
+  "name": "lustrum-ch",
+  "short_name": "lustrum-ch",
+  "description": "Website for the 12th lustrum of CH",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#5DC5EA",
+  "theme_color": "#5DC5EA"
+}

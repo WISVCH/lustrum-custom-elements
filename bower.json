@@ -1,0 +1,13 @@
+{
+  "name": "lustrum-ch",
+  "description": "Website for the 12th lustrum of Christiaan Huygens",
+  "main": "index.html",
+  "dependencies": {
+    "polymer": "Polymer/polymer#^1.7.0",
+    "wisvch-footer": "wisvch/wisvch-footer#^2.0-preview",
+    "wisvch-committee": "wisvch/wisvch-committee#^1.0.0"
+  },
+  "devDependencies": {
+    "webcomponentsjs": "webcomponents/webcomponentsjs#^0.7.0"
+  }
+}

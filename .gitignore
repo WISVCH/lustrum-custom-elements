@@ -1,0 +1,5 @@
+bower_components/
+build/
+images-optimized/
+node_modules/
+*.pem

@@ -15,7 +15,7 @@ const analyzer = new Analyzer({
   scanners: new Map([['html', [new HtmlCustomElementReferenceScanner()]]])
 });
 
-const buildFolder = path.resolve(process.cwd(), 'build');
+const buildFolder = path.resolve(process.cwd(), global.config.build.rootDirectory);
 
 module.exports = () =>
   analyzer.analyze('index.html')

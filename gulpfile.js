@@ -19,9 +19,6 @@ const uglifyMinifier = require('gulp-uglify/minifier');
 const cssSlam = require('css-slam').gulp;
 const htmlMinifier = require('gulp-html-minifier');
 const jshint = require('gulp-jshint');
-const superagent = require('superagent');
-const fs = require('fs-extra');
-const glob = require('glob');
 
 // Got problems? Try logging 'em
 // const logging = require('plylog');
@@ -102,48 +99,16 @@ function dependencies() {
 const scaffoldIndexes = require('./gulp-tasks/scaffold-indexes.js');
 
 gulp.task('scaffold-indexes', gulp.series([
-  clean(['test-build/']),
+  clean([ global.config.build.rootDirectory ]),
   scaffoldIndexes
 ]));
 
-const root = path.resolve(process.cwd(), 'images');
-const optimizedImagesRoot = path.resolve(process.cwd(), 'images-optimized');
-const imageOptions = {
-  merchandise: '450,scale-down'
-};
+const optimizeImages = require('./gulp-tasks/optimize-images.js');
 
 // Optimize images with ImageOptim
 // Run with `yarn run build optimize-images`
-gulp.task('optimize-images', () =>
-  glob('images/**/*.{jpg,png,svg}', (err, files) => {
-    for (const file of files) {
-      const relativeFile = file.substring(file.indexOf('/') + 1);
-      fs.ensureDirSync(path.resolve(optimizedImagesRoot, path.dirname(relativeFile)));
-      if (path.extname(file) === '.svg') {
-        fs.copySync(file, path.resolve(optimizedImagesRoot, relativeFile));
-      } else {
-        const imageCategory = path.relative(root, file).split('/')[0];
-        const options = imageOptions[imageCategory] || 'full';
-        superagent.post(`https://im2.io/nddfzrzzpk/${options}`)
-        .attach('file', file)
-        .end((err, res) =>  {
-          console.log(`Finished optimizing ${file}`);
-          fs.writeFileSync(path.resolve(optimizedImagesRoot, relativeFile), res.body);
-        });
-      }
-    }
-  })
-);
-
-gulp.task('ensure-images-optimized', () =>
-  new Promise((resolve, reject) => {
-    if (!fs.existsSync(optimizedImagesRoot)) {
-      reject('`images-optimized` does not exist. Make sure to run `yarn run build optimize-images`');
-    } else {
-      resolve();
-    }
-  })
-);
+gulp.task('optimize-images', optimizeImages.optimizeImages);
+gulp.task('ensure-images-optimized', optimizeImages.ensureOptimizeImages);
 
 function linter() {
   return gulp.src([ 'scripts/**/*.js',

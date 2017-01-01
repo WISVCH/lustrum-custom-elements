@@ -12,5 +12,22 @@ First, make sure you have the [Polymer CLI](https://www.npmjs.com/package/polyme
 ## Viewing Your Application
 
 ```
-$ polymer serve
+$ yarn run serve
+```
+
+Make sure you optimized the images by running
+
+```
+$ yarn run build optimize-images
+```
+
+## Produce a production build
+
+```
+$ yarn run build scaffold-indexes
+```
+
+You can view the build with
+```
+$ yarn run serve build
 ```

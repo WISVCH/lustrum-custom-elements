@@ -1,0 +1,21 @@
+<template id="wisvch-lustrum-tickets">
+  Test page
+</template>
+
+<script>
+(function(document, customElements) {
+  const doc = document.currentScript.ownerDocument;
+  class WisvchLustrumTickets extends HTMLElement {
+    constructor() {
+      super();
+
+      const template = doc.getElementById('wisvch-lustrum-tickets');
+      const clone = document.importNode(template.content, true);
+      const shadow = this.attachShadow({mode: 'open'});
+      shadow.appendChild(clone);
+    }
+  }
+
+  customElements.define('wisvch-lustrum-tickets', WisvchLustrumTickets);
+})(document, window.customElements);
+</script>

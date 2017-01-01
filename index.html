@@ -1,6 +1,7 @@
 <!doctype html>
 <html lang="en">
   <head>
+    <base href="/" />
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
 
@@ -91,14 +92,11 @@
       .spacing {
         margin-top: var(--header-height);
       }
+
+      [data-route="404"] {
+        display: none;
+      }
     </style>
-    <noscript>
-      <style>
-        [data-route="404"] {
-          display: none;
-        }
-      </style>
-    </noscript>
   </head>
   <body>
     <app-location id="location"></app-location>
@@ -121,11 +119,11 @@
     <iron-lazy-pages id="pages" attr-for-selected="data-route" fallback-selection="404">
       <wisvch-lustrum-homepage
         data-route=""
-        data-path="src/homepage/homepage.html"
+        data-path="/src/homepage/homepage.html"
       ></wisvch-lustrum-homepage>
       <wisvch-lustrum-tickets
         data-route="tickets"
-        data-path="src/tickets/tickets.html"
+        data-path="/src/tickets/tickets.html"
       ></wisvch-lustrum-tickets>
       <section data-route="404">
         Oops you hit a 404!

@@ -99,6 +99,13 @@ function dependencies() {
       .pipe(project.rejoin());
 }
 
+const scaffoldIndexes = require('./gulp-tasks/scaffold-indexes.js');
+
+gulp.task('scaffold-indexes', gulp.series([
+  clean(['test-build/']),
+  scaffoldIndexes
+]));
+
 const root = path.resolve(process.cwd(), 'images');
 const optimizedImagesRoot = path.resolve(process.cwd(), 'images-optimized');
 const imageOptions = {

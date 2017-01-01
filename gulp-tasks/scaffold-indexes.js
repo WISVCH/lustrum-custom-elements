@@ -34,7 +34,7 @@ module.exports = () =>
         const template = dom5.query(parsedDocument, dom5.predicates.hasTagName('template'));
         const childContent = parse5.treeAdapters.default.getTemplateContent(template);
 
-        const replacedSection = dom5.constructors.element('section');
+        const replacedSection = dom5.constructors.element('div');
         dom5.setAttribute(replacedSection, 'data-route', route);
         replacedSection.childNodes = childContent.childNodes;
         dom5.replace(astNode, replacedSection);

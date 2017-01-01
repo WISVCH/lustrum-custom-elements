@@ -5,7 +5,7 @@
   "dependencies": {
     "polymer": "Polymer/polymer#^1.7.0",
     "wisvch-footer": "wisvch/wisvch-footer#^2.0-preview",
-    "wisvch-committee": "wisvch/wisvch-committee#^1.0.0",
+    "wisvch-committee": "wisvch/wisvch-committee#master",
     "iron-selector": "polymerelements/iron-selector#2.0-preview",
     "app-route": "polymerelements/app-route#2.0-preview",
     "iron-lazy-pages": "timvdlippe/iron-lazy-pages#2.0-preview"

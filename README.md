@@ -24,7 +24,7 @@ $ yarn run build optimize-images
 ## Produce a production build
 
 ```
-$ yarn run build scaffold-indexes
+$ yarn run build
 ```
 
 You can view the build with

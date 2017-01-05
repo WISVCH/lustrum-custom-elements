@@ -142,7 +142,7 @@
     </iron-lazy-pages>
 
     <script>
-    (function(document) {
+    (function(document, window) {
       const navigation = document.getElementById('navigation');
       const location = document.getElementById('location');
       const route = document.getElementById('route');
@@ -159,7 +159,11 @@
       route.addEventListener('data-changed', (e) => {
         navigation.selected = e.detail.value.page;
       });
-    })(document);
+
+      if ('serviceWorker' in window.navigator) {
+        window.navigator.serviceWorker.register('/service-worker.js')
+      }
+    })(document, window);
     </script>
   </body>
 </html>

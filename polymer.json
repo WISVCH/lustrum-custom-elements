@@ -2,12 +2,16 @@
   "entrypoint": "index.html",
   "shell": "index.html",
   "sources": [
-   "images-optimized/**/*"
+   "images-optimized/**/*",
+   "src/**/*"
   ],
   "extraDependencies": [
     "manifest.json",
     "favicon.ico",
     "robots.txt",
-    "bower_components/custom-elements/custom-elements.min.js"
+    "committee.json",
+    "bower_components/custom-elements/custom-elements.min.js",
+    "bower_components/wisvch-committee/icons/**/*",
+    "index-build/**/*"
   ]
 }

@@ -14,8 +14,7 @@ http://polymer.github.io/PATENTS.txt
 const path = require('path');
 const gulp = require('gulp');
 const gulpif = require('gulp-if');
-const uglify = require('uglify-js');
-const uglifyMinifier = require('gulp-uglify/minifier');
+const babel = require('gulp-babel')
 const cssSlam = require('css-slam').gulp;
 const htmlMinifier = require('gulp-html-minifier');
 const jshint = require('gulp-jshint');
@@ -23,28 +22,6 @@ const jshint = require('gulp-jshint');
 // Got problems? Try logging 'em
 // const logging = require('plylog');
 // logging.setVerbose();
-
-// !!! IMPORTANT !!! //
-// Keep the global.config above any of the gulp-tasks that depend on it
-global.config = {
-  polymerJsonPath : path.join(process.cwd(), 'polymer.json'),
-  build : {
-    rootDirectory : 'build',
-    bundledDirectory : 'bundled',
-    unbundledDirectory : 'unbundled',
-    // Accepts either 'bundled', 'unbundled', or 'both'
-    // A bundled version will be vulcanized and sharded. An unbundled version
-    // will not have its files combined (this is for projects using HTTP/2
-    // server push). Using the 'both' option will create two output projects,
-    // one for bundled and one for unbundled
-    bundleType : 'both'
-  },
-  // Path to your service worker, relative to the build root directory
-  serviceWorkerPath : 'service-worker.js',
-  // Service Worker precache options based on
-  // https://github.com/GoogleChrome/sw-precache#options-parameter
-  swPrecacheConfig : require('./sw-precache-config.json')
-};
 
 // Add your own custom gulp tasks to the gulp-tasks directory
 // A few sample tasks are provided for you
@@ -76,7 +53,7 @@ function minify() {
 function source() {
   return project.splitSource()
       // Add your own build tasks here!
-      .pipe(gulpif(/\.js$/, uglifyMinifier({}, uglify)))
+      .pipe(gulpif(/\.js$/, babel({presets: ['babili']})))
       .pipe(gulpif(/\.css$/, cssSlam()))
       .pipe(gulpif(/\.html$/, cssSlam()))
       .pipe(gulpif(/\.html$/, minify()))
@@ -89,7 +66,7 @@ function source() {
 // case you need it :)
 function dependencies() {
   return project.splitDependencies()
-      .pipe(gulpif(/\.js$/, uglifyMinifier({}, uglify)))
+      .pipe(gulpif(/\.js$/, babel({presets: ['babili']})))
       .pipe(gulpif(/\.css$/, cssSlam()))
       .pipe(gulpif(/\.html$/, cssSlam()))
       .pipe(gulpif(/\.html$/, minify()))
@@ -99,8 +76,8 @@ function dependencies() {
 const scaffoldIndexes = require('./gulp-tasks/scaffold-indexes.js');
 
 gulp.task('scaffold-indexes', gulp.series([
-  clean([ global.config.build.rootDirectory ]),
-  scaffoldIndexes
+  clean([ 'index-build' ]),
+  scaffoldIndexes.scaffold
 ]));
 
 const optimizeImages = require('./gulp-tasks/optimize-images.js');
@@ -122,6 +99,9 @@ function linter() {
 // and process them, and output bundled and unbundled versions of the project
 // with their own service workers
 gulp.task('default', gulp.series([
-  clean([ global.config.build.rootDirectory ]),
-  project.merge(source, dependencies), project.serviceWorker
+  clean([ 'build', 'index-build' ]),
+  scaffoldIndexes.scaffold,
+  project.merge(source, dependencies), project.serviceWorker,
+  scaffoldIndexes.mergeIntoBuild,
+  clean([ path.resolve('build', 'index-build'), 'index-build' ])
 ]));

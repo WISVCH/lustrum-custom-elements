@@ -8,6 +8,7 @@ const dom5 = require('dom5');
 const parse5 = require('parse5');
 const fs = require('fs-extra');
 const path = require('path');
+const gulp = require('gulp');
 
 const analyzer = new Analyzer({
   urlLoader: new FSUrlLoader('./'),
@@ -15,13 +16,15 @@ const analyzer = new Analyzer({
   scanners: new Map([['html', [new HtmlCustomElementReferenceScanner()]]])
 });
 
-const buildFolder = path.resolve(process.cwd(), global.config.build.rootDirectory);
+const buildFolder = path.resolve(process.cwd(), 'build');
+const temporaryFolder = path.resolve(process.cwd(), 'index-build');
+const temporaryBuildFolderLocation = path.resolve(buildFolder, 'index-build/**/*');
 
-module.exports = () =>
+const scaffold = () =>
   analyzer.analyze('index.html')
   .then((document) => {
     const ast = document.parsedDocument.ast;
-    fs.ensureDirSync(buildFolder);
+    fs.ensureDirSync(temporaryFolder);
 
     for (const element of document.getByKind('element-reference')) {
       const astNode = element.astNode;
@@ -40,14 +43,19 @@ module.exports = () =>
         dom5.replace(astNode, replacedSection);
 
         const indexLocation = `${route ? `${route}/` : ''}index.html`;
-        fs.ensureDirSync(path.resolve(buildFolder, route));
-        fs.writeFileSync(path.resolve(buildFolder, indexLocation), parse5.serialize(ast));
+        fs.ensureDirSync(path.resolve(temporaryFolder, route));
+        fs.writeFileSync(path.resolve(temporaryFolder, indexLocation), parse5.serialize(ast));
 
         dom5.replace(replacedSection, astNode);
       }
     }
-
-    for (const folder of ['bower_components', 'committee.json', 'images-optimized', 'manifest.json', 'src', 'index-imports.html']) {
-      fs.copySync(folder, path.resolve(buildFolder, folder));
-    }
   });
+
+const mergeIntoBuild = () =>
+  gulp.src(temporaryBuildFolderLocation).
+      pipe(gulp.dest(buildFolder));
+
+module.exports = {
+  scaffold: scaffold,
+  mergeIntoBuild: mergeIntoBuild
+};

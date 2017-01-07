@@ -27,7 +27,7 @@
     "build": "node ./node_modules/gulp/bin/gulp.js",
     "ensure-images": "node ./node_modules/gulp/bin/gulp.js ensure-images-optimized",
     "serve": "yarn run ensure-images && polymer serve -P h2",
-    "serve-build": "yarn run ensure-images && polymer serve build/unbundled -P h2"
+    "deploy": "yarn run build && firebase deploy"
   },
   "engines": {
     "node": ">=7.0.0"

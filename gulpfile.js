@@ -101,7 +101,8 @@ function linter() {
 gulp.task('default', gulp.series([
   clean([ 'build', 'index-build' ]),
   scaffoldIndexes.scaffold,
-  project.merge(source, dependencies), project.serviceWorker,
+  project.merge(source, dependencies),
   scaffoldIndexes.mergeIntoBuild,
-  clean([ path.resolve('build', 'index-build'), 'index-build' ])
+  clean([ path.resolve('build', 'index-build'), 'index-build' ]),
+  project.serviceWorker
 ]));

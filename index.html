@@ -52,6 +52,7 @@
         text-transform: uppercase;
         font-weight: bold;
         top: 0;
+        box-shadow: 0 2px 5px rgba(0,0,0,.26);
       }
 
       header label {
@@ -70,12 +71,17 @@
 
       nav a {
         margin: 0 10px;
-        color: inherit;
+        color: #212121;
+        opacity: 1;
+        transition: opacity 0.2s ease-in-out;
+      }
+
+      nav a:hover {
+        opacity: 0.6;
       }
 
       .logo {
-        color: var(--secondary-color);
-        margin: 20px;
+        margin: 5px 20px;
       }
 
       @media (max-width: 400px) {
@@ -127,7 +133,7 @@
     <app-location id="location"></app-location>
     <app-route id="route" pattern="/:page"></app-route>
     <header>
-      <span class="logo">Trending</span>
+      <img src="images-optimized/logo.svg" alt="Trending" class="logo" width="200" height="75" />
       <label for="menu">Menu</label>
       <input id="menu" type="checkbox" />
       <nav>

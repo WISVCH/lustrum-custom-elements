@@ -13,23 +13,73 @@
     }
 
     section:nth-child(2n) {
+      color: white;
       background-color: var(--primary-color);
     }
 
     section:nth-child(2n + 1) {
+      color: white;
       background-color: var(--secondary-color);
     }
 
     section p, wisvch-committee {
       max-width: 750px;
-      margin: 0 auto;
-      padding: 10px;
-      text-align: justify;
+      margin: 20px auto;
+      text-align: center;
+    }
+
+    section h1 {
+      margin-bottom: 10px;
+    }
+
+    section h2, section h3 {
+      margin: 5px;
     }
 
     h1::after {
       content: ' ';
-      background-color: black;
+      background-color: white;
+      display: block;
+      height: 5px;
+      width: 50px;
+      margin: 10px auto;
+    }
+
+    #logo {
+      height: calc(100vh - 128px);
+    }
+
+    #logo img {
+      display: block;
+      margin: 0 auto;
+      width: 55vw;
+      padding: 6vh 0;
+    }
+
+    .title--big {
+      display: block;
+      line-height: 48pt;
+      font-size: 48pt;
+      font-weight: 800;
+      font-family: 'Open Sans', 'Helvetica Neue', Arial, sans-serif;
+    }
+    
+    .title--small {
+      display: block;
+      line-height: 18pt;
+      font-size: 18pt;
+      font-weight: 100;
+      font-family: 'Helvetica Neue', Arial, sans-serif;
+    }
+
+    #partners {
+      background: white;
+      color: black;
+    }
+
+    #partners h1::after {
+      content: ' ';
+      background-color: var(--secondary-color);
       display: block;
       height: 5px;
       width: 50px;
@@ -45,7 +95,7 @@
     }
 
     #activities div:nth-child(2n + 1) {
-      background-color: var(--tertiary-color);
+      background-color: var(--primary-color);
     }
 
     #merchandise img {
@@ -53,6 +103,11 @@
       max-width: calc(100% - 20px);
     }
   </style>
+  <section id="logo">
+    <img src="images-optimized/logo.svg" alt="#Trending logo" width="1000" height"350">
+    <span class="title--big">12TH LUSTRUM</span>
+    <span class="title--small">W.I.S.V. 'Christiaan Huygens'</span>
+  </section>
   <section id="general">
     <h1>General Information</h1>
     <p>
